@@ -20,10 +20,10 @@ class CRM
     puts '[5] search_by_attribute'
     puts '[6] fill your screen with 0s'
     puts '[7] exit everything'
+    puts '[home] go home to this main menu at any time'
   end
 
   def call_option
-    case
     when 1 then add_new_contact
     when 2 then modify_existing_contact
     when 3 then delete_contact
@@ -37,15 +37,33 @@ class CRM
   def add_new_contact
     puts 'Enter First name'
     first_name = gets.chomp
-    puts 'enter family name'
-    
+    puts 'enter family/second name'
+    family_name = gets.chomp
+    puts 'Enter Email'
+    email = gets.chomp
+    puts 'enter a note'
+    note = gets.chomp
+    Contact.create(first_name, family_name, email, note)
   end
 
   def modify_existing_contact
+    puts "Please give the ID# of the contact you wish to modify"
+    puts "if you are unsure of the ID# then please use the display_all_contacts"
+    puts "command on the home screen, it is option [4], or search with [5]"
+     id = gets.chomp
+    contact_to_modify = Contact.find(id)
+    puts "What would you like to modify?"
+    puts "options include [email],[first_name],[family_name],[note]"
+    gets.chomp #stuff
 
   end
 
   def delete_contact
+    puts "what is the id of the contact you would like to delete?"
+    puts "if you are unsure please use the the display_all_contacts"
+    puts "command on the home screen, it is option [4], or search with [5]"
+    id = gets.chomp
+    #this is getting tedious. guess ill push this now.
 
   end
 
