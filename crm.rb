@@ -2,8 +2,8 @@
 
 class CRM
 
-  def initialize
-
+  def initialize(name)
+    @name = name
   end
 
   def main_menu
@@ -11,15 +11,34 @@ class CRM
   end
 
   def print_main_menu
-
+    puts 'Welcome to the main_menu! The following options are available to you'
+    puts 'please type any of the following numbers/commands'
+    puts '[1] add_new_contact'
+    puts '[2] edit/change a contact'
+    puts '[3] delete_contact'
+    puts '[4] display_all_contacts'
+    puts '[5] search_by_attribute'
+    puts '[6] fill your screen with 0s'
+    puts '[7] exit everything'
   end
 
   def call_option
-
-  end
+    case
+    when 1 then add_new_contact
+    when 2 then modify_existing_contact
+    when 3 then delete_contact
+    when 4 then display_all_contacts
+    when 5 then search_by_attribute
+    when 6 then 10**10**6
+    when 7 then Exit
+    when 8 then puts "Congratz you typed 8"
+    end
 
   def add_new_contact
-
+    puts 'Enter First name'
+    first_name = gets.chomp
+    puts 'enter family name'
+    
   end
 
   def modify_existing_contact
