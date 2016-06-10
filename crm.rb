@@ -49,7 +49,7 @@ class CRM
   def modify_existing_contact
     puts "Please give the ID# of the contact you wish to modify"
     puts "if you are unsure of the ID# then please use the display_all_contacts"
-    puts "command on the home screen, it is option [4], or search with [5]"
+    puts "command on the home screen, it is option [4], or search with [5] type home to get to home screen"
      id = gets.chomp
     contact_to_modify = Contact.find(id)
     puts "What would you like to modify?"
@@ -61,7 +61,7 @@ class CRM
   def delete_contact
     puts "what is the id of the contact you would like to delete?"
     puts "if you are unsure please use the the display_all_contacts"
-    puts "command on the home screen, it is option [4], or search with [5]"
+    puts "command on the home screen, it is option [4], or search with [5] type home to get to home screen"
     id = gets.chomp
     #this is getting tedious. guess ill push this now.
 
@@ -69,7 +69,8 @@ class CRM
 
   # This method should accept as an argument an array of contacts
   # and display each contact in that array
-  def display_contacts
+  def display_contacts #not sure why i have display_contacts and display_all_contacts
+    puts "which contacts do you want displayed?"
 
     # HINT: Make use of this method in the display_all_contacts and search_by_attribute methods to keep your code DRY
   end
