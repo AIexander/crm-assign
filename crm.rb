@@ -1,3 +1,5 @@
+#ok, time to get started on this thing. looks pretty intimidating.
+
 class CRM
 
   def initialize
@@ -36,12 +38,12 @@ class CRM
   end
 
   def display_all_contacts
-    
+
     # HINT: Make use of the display_contacts method to keep your code DRY
   end
 
   def search_by_attribute
-    
+
     # HINT: Make use of the display_contacts method to keep your code DRY
   end
 
