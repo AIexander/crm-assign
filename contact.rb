@@ -1,6 +1,6 @@
 class Contact
   attr_accessor :first_name, :family_name, :email, :note
-
+  attr_reader :id
   @@contacts = []
   @@id = 1000
 
@@ -27,7 +27,8 @@ class Contact
   new_contact
   end
   def self.all
-    @@contacts
+    @@contacts.each do |contact|
+      puts contact.full_name
   end
 
   def self.find (search_id)
@@ -37,13 +38,25 @@ class Contact
   def update(attribute, value)
     case attribute
       when "first_name" then @first_name = value
+        puts "write the new first_name"
+        value.first_name = gets.chomp
       when "family_name" then @family_name = value
+        puts "write the second/family_name"
+        value.family_name = gets.chomp
       when "last_name" then @family_name = value
+        puts "write the second/family_name"
+        value.family_name = gets.chomp
       when "email" then @email = value
+        puts "write the new email"
+        value.email = gets.chomp
       when "note" then @note = value
+        puts "write a new note"
+        value.note = gets.chomp
   end
-
-
+puts "first_name: #{value.first_name}"
+puts "family_name/second_name: #{value.family_name}"
+puts "email: #{value.email}"
+puts "note: #{value.note}"
   # This method should work similarly to the find method above
   # but it should allow you to search for a contact using attributes other than id
   # by specifying both the name of the attribute and the value
