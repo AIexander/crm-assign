@@ -8,7 +8,7 @@ class CRM
   def main_menu
     while true
       print_main_menu
-
+    end
 
   end
 
@@ -26,6 +26,8 @@ class CRM
   end
 
   def call_option
+    user_input = gets.to_i
+    case user_input
     when 1 then add_new_contact
     when 2 then modify_existing_contact
     when 3 then delete_contact
@@ -35,7 +37,7 @@ class CRM
     when 7 then exit
     when 8 then puts "Congratz you typed 8"
     end
-
+  end
   def add_new_contact
     puts 'Enter First name'
     first_name = gets.chomp
@@ -57,12 +59,10 @@ class CRM
     puts "What would you like to modify?"
     puts "options include [email],[first_name],[family_name], [last_name], [note]"
     update = gets.chomp
-
-
   end
 
   def delete_contact
-    puts "who would you like to delete?"
+    puts "who would you like to delete? [id#]"
     puts "if you are unsure please use the the display_all_contacts"
     puts "command on the home screen, it is option [4], or search with [5] type home to get to home screen"
     delete_victum = gets.to_i
@@ -89,9 +89,7 @@ class CRM
     puts "ok im ready, give me something to search for"
     user_search = gets.chomp
     Contact.find_by(category, user_search)
-
   end
 
   # Add other methods here, if you need them.
-
 end

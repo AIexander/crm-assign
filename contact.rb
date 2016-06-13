@@ -29,10 +29,12 @@ class Contact
   def self.all
     @@contacts.each do |contact|
       puts contact.full_name
+    end
   end
 
   def self.find (search_id)
     @@contacts.each {|x| return x if x.id == search_id}
+    end
   end
 
   def update(attribute, value)
@@ -52,11 +54,13 @@ class Contact
       when "note" then @note = value
         puts "write a new note"
         value.note = gets.chomp
+
+        puts "first_name: #{value.first_name}"
+        puts "family_name/second_name: #{value.family_name}"
+        puts "email: #{value.email}"
+        puts "note: #{value.note}"
   end
-puts "first_name: #{value.first_name}"
-puts "family_name/second_name: #{value.family_name}"
-puts "email: #{value.email}"
-puts "note: #{value.note}"
+end
   # This method should work similarly to the find method above
   # but it should allow you to search for a contact using attributes other than id
   # by specifying both the name of the attribute and the value
@@ -67,19 +71,20 @@ puts "note: #{value.note}"
 
   # This method should delete all of the contacts
   def self.delete_all
-
+    @@contacts = []
   end
 
   def full_name
-
+    "#{first_name}  #{family_name}"
   end
 
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
   def delete
-
+    @@contacts.each do |contact|
+      if contact.id == @id
+        @@contacts.delete(contact)
+      end
   end
-
-  # Feel free to add other methods here, if you need them.
-
 end
+  # Feel free to add other methods here, if you need them.
