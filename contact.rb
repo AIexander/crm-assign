@@ -1,37 +1,48 @@
 class Contact
+  attr_accessor :first_name, :family_name, :email, :note
 
-  # This method should initialize the contact's attributes
+  @@contacts = []
+  @@id = 1000
+
   def initialize(first_name, family_name, email, note)
     @first_name = first_name
     @family_name = family_name
     @email = email
     @note = note
+    @id = @@id
+    @@id += 1
   end
 
-  # This method should call the initializer,
-  # store the newly created contact, and then return it
-  def self.create
-
+  def full_name
+    "#{first_name} #{family_name}"
   end
-
-  # This method should return all of the existing contacts
+  def self.create(first_name, family_name, email, note = "N/A")
+    # make new contact
+    new_contact = Contact.new(first_name, family_name, email, note)
+    #assign a unique identifier!
+    #add the new contact to the contacts array
+    @@contacts << new_contact
+    #incremient the id\
+    # return the new contact we created =}
+  new_contact
+  end
   def self.all
-
+    @@contacts
   end
 
-  # This method should accept an id as an argument
-  # and return the contact who has that id
-  def self.find
-
+  def self.find (search_id)
+    @@contacts.each {|x| return x if x.id == search_id}
   end
 
-  # This method should allow you to specify
-  # 1. which of the contact's attributes you want to update
-  # 2. the new value for that attribute
-  # and then make the appropriate change to the contact
-  def update
-
+  def update(attribute, value)
+    case attribute
+      when "first_name" then @first_name = value
+      when "family_name" then @family_name = value
+      when "last_name" then @family_name = value
+      when "email" then @email = value
+      when "note" then @note = value
   end
+
 
   # This method should work similarly to the find method above
   # but it should allow you to search for a contact using attributes other than id
