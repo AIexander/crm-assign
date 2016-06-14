@@ -23,7 +23,6 @@ class CRM
     puts '[5] search_by_attribute'
     puts '[6] fill your screen with 0s'
     puts '[7] exit everything'
-    puts '[home] go home to this main menu at any time'
   end
   def call_option(user_selected)
     case user_selected
@@ -52,7 +51,7 @@ class CRM
   def modify_existing_contact
     puts "Please give the ID# of the contact you wish to modify"
     puts "if you are unsure of the ID# then please use the display_all_contacts"
-    puts "command on the home screen, it is option [4], or search with [5] type home to get to home screen"
+    puts "command on the home screen, it is option [4], or search with [5] "
      id = gets.to_i
     contact_to_modify = Contact.find(id)
     puts "What would you like to modify?"
@@ -66,7 +65,7 @@ class CRM
   def delete_contact
     puts "who would you like to delete? [id#]"
     puts "if you are unsure please use the the display_all_contacts"
-    puts "command on the home screen, it is option [4], or search with [5] type home to get to home screen"
+    puts "command on the home screen, it is option [4], or search with [5]"
     contact_id = gets.to_i
     delete_victum = Contact.find(contact_id)
     delete_victum.delete
