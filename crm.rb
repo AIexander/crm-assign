@@ -91,7 +91,8 @@ class CRM
     category = gets.chomp
     puts "ok im ready, give me something to search for"
     user_search = gets.chomp
-    Contact.find_by(category, user_search)
+    puts Contact.find_by(category, user_search).to_s
+
   end
 
   # Add other methods here, if you need them.
