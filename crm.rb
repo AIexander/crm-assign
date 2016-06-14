@@ -57,7 +57,10 @@ class CRM
     contact_to_modify = Contact.find(id)
     puts "What would you like to modify?"
     puts "options include [email],[first_name],[family_name], [last_name], [note]"
-    contact_to_modify.update
+    search_attribute = gets.chomp
+    puts "what would you like to change this to?"
+    changed_thing = gets.chomp
+    contact_to_modify.update(search_attribute, changed_thing)
   end
 
   def delete_contact

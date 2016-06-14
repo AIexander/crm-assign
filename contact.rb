@@ -38,30 +38,39 @@ class Contact
     @@contacts.each {|x| return x if x.id == search_id}
   end
 
-  def update(contact_to_modify)
-    case contact_to_modify
-      when "first_name" then @first_name = value
-        puts "write the new first_name"
-        value.first_name = gets.chomp
-      when "family_name" then @family_name = value
-        puts "write the second/family_name"
-        value.family_name = gets.chomp
-      when "last_name" then @family_name = value
-        puts "write the second/family_name"
-        value.family_name = gets.chomp
-      when "email" then @email = value
-        puts "write the new email"
-        value.email = gets.chomp
-      when "note" then @note = value
-        puts "write a new note"
-        value.note = gets.chomp
-
-        puts "first_name: #{value.first_name}"
-        puts "family_name/second_name: #{value.family_name}"
-        puts "email: #{value.email}"
-        puts "note: #{value.note}"
+  def update(search_attribute, update_attribute)
+    if search_attribute == "email"
+      self.email = update_attribute
+    elsif search_attribute == "first_name"
+      self.first_name = update_attribute
+    elsif search_attribute == "family_name"
+      self.family_name = update_attribute
+    elsif search_attribute == "note"
+      self.note = update_attribute
     end
   end
+    # case contact_to_modify
+    #   when "first_name" then @first_name = value
+    #     puts "write the new first_name"
+    #     value.first_name = gets.chomp
+    #   when "family_name" then @family_name = value
+    #     puts "write the second/family_name"
+    #     value.family_name = gets.chomp
+    #   when "last_name" then @family_name = value
+    #     puts "write the second/family_name"
+    #     value.family_name = gets.chomp
+    #   when "email" then @email = value
+    #     puts "write the new email"
+    #     value.email = gets.chomp
+      # when "note" then #@n#ote = value
+    #     puts "write a new note"
+    #     value.note = gets.chomp
+    #
+    #     puts "first_name: #{value.first_name}"
+    #     puts "family_name/second_name: #{value.family_name}"
+    #     puts "email: #{value.email}"
+    #     puts "note: #{value.note}"
+    # end
   # This method should work similarly to the find method above
   # but it should allow you to search for a contact using attributes other than id
   # by specifying both the name of the attribute and the value
