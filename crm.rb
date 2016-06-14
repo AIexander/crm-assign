@@ -1,16 +1,17 @@
+require_relative "contact"
 
 class CRM
 
-  def initialize(name)
-    @name = name
-  end
+
 
   def main_menu
     while true
       print_main_menu
+      user_selected = gets.to_i
+      call_option(user_selected)
+    end
     end
 
-  end
 
   def print_main_menu
     puts 'Welcome to the main_menu! The following options are available to you'
@@ -24,16 +25,14 @@ class CRM
     puts '[7] exit everything'
     puts '[home] go home to this main menu at any time'
   end
-
-  def call_option
-    user_input = gets.to_i
-    case user_input
+  def call_option(user_selected)
+    case user_selected
     when 1 then add_new_contact
     when 2 then modify_existing_contact
     when 3 then delete_contact
     when 4 then display_all_contacts
     when 5 then search_by_attribute
-    when 6 then 10**10**6
+    when 6 then puts 10**10**6
     when 7 then exit
     when 8 then puts "Congratz you typed 8"
     end
@@ -54,19 +53,20 @@ class CRM
     puts "Please give the ID# of the contact you wish to modify"
     puts "if you are unsure of the ID# then please use the display_all_contacts"
     puts "command on the home screen, it is option [4], or search with [5] type home to get to home screen"
-     id = gets.chomp
+     id = gets.to_i
     contact_to_modify = Contact.find(id)
     puts "What would you like to modify?"
     puts "options include [email],[first_name],[family_name], [last_name], [note]"
-    update = gets.chomp
+    contact_to_modify.update
   end
 
   def delete_contact
     puts "who would you like to delete? [id#]"
     puts "if you are unsure please use the the display_all_contacts"
     puts "command on the home screen, it is option [4], or search with [5] type home to get to home screen"
-    delete_victum = gets.to_i
-    Contact.delete(delete_victum)
+    contact_id = gets.to_i
+    delete_victum = Contact.find(contact_id)
+    delete_victum.delete
     puts "contact has been erased."
   end
 
@@ -81,10 +81,10 @@ class CRM
 
   def search_by_attribute
     puts "Tell me what you would like to search with."
-    puts "[1] first_name"
-    puts "[2] family_name"
-    puts "[3] email"
-    puts "[4] note"
+    puts "first_name"
+    puts "family_name"
+    puts "email"
+    puts "note"
     category = gets.chomp
     puts "ok im ready, give me something to search for"
     user_search = gets.chomp
@@ -93,3 +93,6 @@ class CRM
 
   # Add other methods here, if you need them.
 end
+
+crmapp = CRM.new
+crmapp.main_menu

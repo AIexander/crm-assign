@@ -1,8 +1,9 @@
+
 class Contact
   attr_accessor :first_name, :family_name, :email, :note
   attr_reader :id
   @@contacts = []
-  @@id = 1000
+  @@id = 1
 
   def initialize(first_name, family_name, email, note)
     @first_name = first_name
@@ -24,21 +25,21 @@ class Contact
     @@contacts << new_contact
     #incremient the id\
     # return the new contact we created =}
-  new_contact
+  return new_contact
   end
   def self.all
     @@contacts.each do |contact|
       puts contact.full_name
+      puts "^^^contact ID #{contact.id}"
     end
   end
 
   def self.find (search_id)
     @@contacts.each {|x| return x if x.id == search_id}
-    end
   end
 
-  def update(attribute, value)
-    case attribute
+  def update(contact_to_modify)
+    case contact_to_modify
       when "first_name" then @first_name = value
         puts "write the new first_name"
         value.first_name = gets.chomp
@@ -59,8 +60,8 @@ class Contact
         puts "family_name/second_name: #{value.family_name}"
         puts "email: #{value.email}"
         puts "note: #{value.note}"
+    end
   end
-end
   # This method should work similarly to the find method above
   # but it should allow you to search for a contact using attributes other than id
   # by specifying both the name of the attribute and the value
@@ -71,7 +72,7 @@ end
 
   # This method should delete all of the contacts
   def self.delete_all
-    @@contacts = []
+    @@contacts.clear
   end
 
   def full_name
@@ -81,10 +82,7 @@ end
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
   def delete
-    @@contacts.each do |contact|
-      if contact.id == @id
-        @@contacts.delete(contact)
-      end
+    @@contacts.delete(self)
   end
 end
   # Feel free to add other methods here, if you need them.
